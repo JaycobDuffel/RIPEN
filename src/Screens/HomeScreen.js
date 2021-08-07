@@ -18,9 +18,9 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Constants.styles.primaryColor,
+        backgroundColor: Constants.styles.brandYellow,
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         height: '100%'
     },

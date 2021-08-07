@@ -13,7 +13,7 @@ export default function AccountScreen(props) {
 const styles = StyleSheet.create({
     container: {
         height: '100%',
-        backgroundColor: Constants.styles.primaryColor,
+        backgroundColor: Constants.styles.brandYellow,
         display: 'flex',
         alignItems: 'center',
         justifyContent:'center',
