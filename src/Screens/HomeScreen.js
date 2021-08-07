@@ -1,0 +1,21 @@
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+import Constants from '../Constants/Constants'
+
+export default function HomeScreen({ user }) {
+    return (
+        <View style={styles.container}>
+            <Text>Hello Home Screen</Text>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: Constants.styles.primaryColor,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+});
