@@ -3,10 +3,11 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 
 import Constants from '../Constants/Constants'
 
-export default function HomeScreen({ user }) {
+export default function HomeScreen({ user, navigation }) {
     return (
         <View style={styles.container}>
             <Text>Hello Home Screen</Text>
+            <Button title='Account' onPress={() => navigation.navigate('AccountScreen')} />
         </View>
     );
 }
