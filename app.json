@@ -3,6 +3,11 @@
     "name": "ripen",
     "slug": "ripen",
     "version": "1.0.0",
+    "splash": {
+      "image": "./src/Assets/Images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#e76f51"
+    },
     "assetBundlePatterns": [
       "**/*"
     ]
