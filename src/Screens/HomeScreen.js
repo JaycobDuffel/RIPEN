@@ -6,11 +6,11 @@ import Constants from '../Constants/Constants'
 
 export default function HomeScreen({ navigation }) {
 
-    const authContext = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     return (
         <View style={styles.container}>
-            <Text>Hello HomeScreen {authContext.user.firstName}</Text>
+            <Text>Hello HomeScreen {user.name}</Text>
             <Button title='Account' onPress={() => navigation.navigate('AccountScreen')} />
         </View>
     );
