@@ -7,7 +7,7 @@ import AuthNavigator from './src/Navigation/AuthNavigator';
 
 
 export default function App() {
-  const [user, setUser] = useState({ firstName: 'TayJay' });
+  const [user, setUser] = useState();
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
