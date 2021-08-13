@@ -7,6 +7,8 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "@expo/vector-icons": "^12.0.5",
+    "@react-navigation/bottom-tabs": "^6.0.4",
     "@react-navigation/native": "^6.0.1",
     "@react-navigation/native-stack": "^6.0.2",
     "expo": "~42.0.1",
@@ -21,7 +23,8 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-unimodules": "~0.14.5",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "expo-camera": "~11.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
