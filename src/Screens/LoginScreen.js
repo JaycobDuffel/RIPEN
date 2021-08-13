@@ -3,6 +3,7 @@ import { TextInput, View, StyleSheet, Text, Image, TouchableOpacity } from 'reac
 
 import AuthContext from '../Context/AuthContext';
 import Constants from '../Constants/Constants';
+import Storage from '../Context/Storage';
 import logo from '../Assets/Images/logo.png';
 
 export default function LoginScreen({ navigation }) {
@@ -18,7 +19,9 @@ export default function LoginScreen({ navigation }) {
                 <TextInput style={styles.input} onChangeText={(text) => { setName(text) }} placeholder='Name' />
             </View>
             <View style={{ display: 'flex', alignItems: 'center' }}>
-                <TouchableOpacity style={styles.button} onPress={() => setUser({ name: name })}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => { setUser({ name: name }); Storage.storeData({name: name}) }}>
                     <Text style={styles.buttonText}>
                         Login
                     </Text>
