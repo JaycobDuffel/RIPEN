@@ -10,6 +10,10 @@ export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
+  const restoreUser = async () => {
+    const user = await Storage.getData();
+    if (user) setUser(user);
+  };
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <NavigationContainer>
