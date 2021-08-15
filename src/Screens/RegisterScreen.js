@@ -3,6 +3,7 @@ import { TextInput, View, StyleSheet, Text, TouchableOpacity } from 'react-nativ
 
 import AuthContext from '../Context/AuthContext';
 import Constants from '../Constants/Constants';
+import Auth from '../Auth/encryption';
 import api from '../API/users';
 
 export default function RegisterScreen({ navigation }) {
@@ -13,8 +14,11 @@ export default function RegisterScreen({ navigation }) {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (email, username, password) => {
-        const newUser = {id: email, email, username, password}
+
+        const hashedPassword = Auth.encode(password)
+        const newUser = { id: email, email, username, hashedPassword }
         const result = await api.postUser(newUser)
+
         if (!result.ok) {
             console.log(result.problem)
         }
