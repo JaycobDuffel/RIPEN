@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { TextInput, View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
+import Api from '../API/users';
 import AuthContext from '../Context/AuthContext';
+import Auth from '../Auth/encryption';
 import Constants from '../Constants/Constants';
 import Storage from '../Context/Storage';
 import logo from '../Assets/Images/logo.png';
@@ -9,6 +11,9 @@ import logo from '../Assets/Images/logo.png';
 export default function LoginScreen({ navigation }) {
 
     const { setUser } = useContext(AuthContext);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
     const validate = async (id) => {
         if (!email || !password) return alert("please fillout the form")
         const result = await Api.getUser(id);
