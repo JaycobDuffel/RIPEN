@@ -32,31 +32,31 @@ export default function RegisterScreen({ navigation }) {
                 autoCapitalize="none"
                 keyboardType="default"
                 onChangeText={(text) => {
-                    setUsername(text);
+                    setUsername(text.trim());
                 }}
                 placeholderTextColor='grey'
                 placeholder="Username"
                 style={styles.input}
                 value={username}
-                />
+            />
             <TextInput
                 autoFocus
                 keyboardType="default"
                 autoCapitalize="none"
                 onChangeText={(text) => {
-                    setEmail(text.toLowerCase());
+                    setEmail(text.toLowerCase().trim());
                 }}
                 placeholderTextColor='grey'
                 placeholder="Email"
                 style={styles.input}
                 value={email}
-                />
+            />
             <TextInput
                 autoFocus
                 autoCapitalize="none"
                 secureTextEntry
                 onChangeText={(text) => {
-                    setPassword(text);
+                    setPassword(text.trim());
                 }}
                 placeholderTextColor='grey'
                 placeholder="Password"

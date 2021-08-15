@@ -15,8 +15,12 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.container}>
             <Image source={logo} />
             <View style={{ width: '100%', display: 'flex', alignItems: 'center', marginTop: 20 }}>
-                <Text style={styles.buttonText}>Enter your name</Text>
-                <TextInput style={styles.input} onChangeText={(text) => { setName(text) }} placeholder='Name' />
+                <Text style={styles.buttonText}>Email</Text>
+                <TextInput autoCapitalize="none" style={styles.input} onChangeText={(text) => { setEmail(text.trim().toLowerCase()) }} placeholder='Email...' />
+            </View>
+            <View style={{ width: '100%', display: 'flex', alignItems: 'center', marginTop: 20 }}>
+                <Text style={styles.buttonText}>Password</Text>
+                <TextInput autoCapitalize="none" secureTextEntry style={styles.input} onChangeText={(text) => { setPassword(text.trim()) }} placeholder='Password...' />
             </View>
             <View style={{ display: 'flex', alignItems: 'center' }}>
                 <TouchableOpacity
