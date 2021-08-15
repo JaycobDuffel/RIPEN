@@ -10,7 +10,7 @@ export default function HomeScreen() {
 
     return (
         <View style={styles.container}>
-            <Text>Hello {user.name}</Text>
+            <Text>Hello {user.username}</Text>
         </View>
     );
 }
