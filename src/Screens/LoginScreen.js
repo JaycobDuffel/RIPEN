@@ -9,7 +9,21 @@ import logo from '../Assets/Images/logo.png';
 export default function LoginScreen({ navigation }) {
 
     const { setUser } = useContext(AuthContext);
-    const [name, setName] = useState('')
+    const validate = async (id) => {
+        if (!email || !password) return alert("please fillout the form")
+        const result = await Api.getUser(id);
+        console.log(result)
+        return result;
+      };
+    
+      const authorize = async () => {
+        const data = await validate(email);
+        if (data.hashedPassword === Auth.encode(password)) {
+          setUser(data);
+        } else {
+          alert("Could not find an account with that email/password combination");
+        }
+      };
 
     return (
         <View style={styles.container}>
@@ -25,7 +39,7 @@ export default function LoginScreen({ navigation }) {
             <View style={{ display: 'flex', alignItems: 'center' }}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => { setUser({ name: name }); Storage.storeData({name: name}) }}>
+                    onPress={() => { authorize(); Storage.storeData({name: name}) }}>
                     <Text style={styles.buttonText}>
                         Login
                     </Text>
