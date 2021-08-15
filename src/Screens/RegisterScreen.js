@@ -15,6 +15,10 @@ export default function RegisterScreen({ navigation }) {
 
     const handleSubmit = async (email, username, password) => {
 
+        const duplicateCheck = await api.getUser(email)
+
+        if (duplicateCheck) return alert('Email already in use');
+
         const hashedPassword = Auth.encode(password)
         const newUser = { id: email, email, username, hashedPassword }
         const result = await api.postUser(newUser)
