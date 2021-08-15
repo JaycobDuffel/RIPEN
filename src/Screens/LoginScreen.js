@@ -70,9 +70,15 @@ const styles = StyleSheet.create({
         width: '50%'
     },
     button: {
+        alignItems: 'center',
+        backgroundColor: Constants.styles.brandOrange,
+        borderRadius: 10,
+        display: 'flex',
+        justifyContent: 'center',
         marginVertical: 5,
-        borderBottomWidth: 1,
-        borderBottomColor: Constants.styles.brandBlue,
+        paddingHorizontal: 10,
+        height: 40,
+        width: 'auto'
     },
     buttonText: {
         fontSize: 20
