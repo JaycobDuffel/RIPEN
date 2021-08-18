@@ -21,12 +21,12 @@ export default function RegisterScreen({ navigation }) {
 
         const hashedPassword = Auth.encode(password)
         const newUser = { id: email, email, username, hashedPassword }
-        const result = await api.postUser(newUser)
-
-        if (!result.ok) {
-            console.log(result.problem)
+        try {
+            await api.postUser(newUser)
+            setUser(newUser);
+        } catch (error) {
+            return alert('Could not create new user')
         }
-        setUser(newUser);
     };
 
     return (
