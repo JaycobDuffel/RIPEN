@@ -24,7 +24,12 @@ export default function LoginScreen({ navigation }) {
       const authorize = async () => {
         const data = await validate(email);
         if (data.hashedPassword === Auth.encode(password)) {
-          setUser(data);
+            setUser(data);
+            Storage.storeData({
+                username: data.username,
+                email: data.email,
+                id: data.id
+            })
         } else {
           alert("Could not find an account with that email/password combination");
         }
@@ -44,7 +49,7 @@ export default function LoginScreen({ navigation }) {
             <View style={{ display: 'flex', alignItems: 'center' }}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => { authorize(); Storage.storeData({name: name}) }}>
+                    onPress={() => { authorize();}}>
                     <Text style={styles.buttonText}>
                         Login
                     </Text>
