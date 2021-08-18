@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { TextInput, View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
+import Api from '../API/users';
 import AuthContext from '../Context/AuthContext';
+import Auth from '../Auth/encryption';
 import Constants from '../Constants/Constants';
 import Storage from '../Context/Storage';
 import logo from '../Assets/Images/logo.png';
@@ -9,19 +11,45 @@ import logo from '../Assets/Images/logo.png';
 export default function LoginScreen({ navigation }) {
 
     const { setUser } = useContext(AuthContext);
-    const [name, setName] = useState('')
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    const validate = async (id) => {
+        if (!email || !password) return alert("please fillout the form")
+        const result = await Api.getUser(id);
+        console.log(result)
+        return result;
+      };
+    
+      const authorize = async () => {
+        const data = await validate(email);
+        if (data.hashedPassword === Auth.encode(password)) {
+            setUser(data);
+            Storage.storeData({
+                username: data.username,
+                email: data.email,
+                id: data.id
+            })
+        } else {
+          alert("Could not find an account with that email/password combination");
+        }
+      };
 
     return (
         <View style={styles.container}>
             <Image source={logo} />
             <View style={{ width: '100%', display: 'flex', alignItems: 'center', marginTop: 20 }}>
-                <Text style={styles.buttonText}>Enter your name</Text>
-                <TextInput style={styles.input} onChangeText={(text) => { setName(text) }} placeholder='Name' />
+                <Text style={styles.buttonText}>Email</Text>
+                <TextInput autoCapitalize="none" style={styles.input} onChangeText={(text) => { setEmail(text.trim().toLowerCase()) }} placeholder='Email...' />
+            </View>
+            <View style={{ width: '100%', display: 'flex', alignItems: 'center', marginTop: 20 }}>
+                <Text style={styles.buttonText}>Password</Text>
+                <TextInput autoCapitalize="none" secureTextEntry style={styles.input} onChangeText={(text) => { setPassword(text.trim()) }} placeholder='Password...' />
             </View>
             <View style={{ display: 'flex', alignItems: 'center' }}>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => { setUser({ name: name }); Storage.storeData({name: name}) }}>
+                    onPress={() => { authorize();}}>
                     <Text style={styles.buttonText}>
                         Login
                     </Text>
@@ -52,9 +80,15 @@ const styles = StyleSheet.create({
         width: '50%'
     },
     button: {
+        alignItems: 'center',
+        backgroundColor: Constants.styles.brandOrange,
+        borderRadius: 10,
+        display: 'flex',
+        justifyContent: 'center',
         marginVertical: 5,
-        borderBottomWidth: 1,
-        borderBottomColor: Constants.styles.brandBlue,
+        paddingHorizontal: 10,
+        height: 40,
+        width: 'auto'
     },
     buttonText: {
         fontSize: 20
