@@ -38,7 +38,7 @@ export default function LoginScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Constants.styles.brandYellow,
+        backgroundColor: Constants.styles.brandYellow[500],
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
