@@ -19,13 +19,9 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.buttonText}>Enter your name</Text>
                 <TextInput style={styles.input} onChangeText={(text) => { setName(text) }} placeholder='Name' />
             </View>
-            <View style={{ display: 'flex', alignItems: 'center' }}>
-                <Button text="Login" onPress={() => { setUser({ name: name }); Storage.storeData({name: name})} }/>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RegisterScreen')}>
-                    <Text style={styles.buttonText}>
-                        Dont have an account? Sign up!
-                    </Text>
-                </TouchableOpacity>
+            <View style={{ display: 'flex', alignItems: 'center'}}>
+                <Button text="Login" onPress={() => { setUser({ name: name }); Storage.storeData({name: name})}}/>
+                <Button text="Sign up" onPress={() => navigation.navigate('RegisterScreen')}/>
             </View>
         </View>
     );
