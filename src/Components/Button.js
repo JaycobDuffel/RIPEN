@@ -17,6 +17,7 @@ export default function Button( props ) {
 
 const styles = StyleSheet.create({
   button: {
+    marginBottom: '1rem',
     borderRadius: 6,
     paddingVertical: 14,
     paddingHorizontal: 14,
