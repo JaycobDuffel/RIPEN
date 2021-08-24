@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 
-export default function Button( props ) {
+export default function Button( {onPress, text} ) {
 
 
   return (
-    <TouchableOpacity onPress={ props.onPress }>
+    <TouchableOpacity onPress={ onPress }>
       <View style={ styles.button }>
         <Text style={ styles.buttonText}>
-          { props.text }
+          { text }
         </Text>
       </View>
     </TouchableOpacity>
