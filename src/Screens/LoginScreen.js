@@ -5,6 +5,7 @@ import AuthContext from '../Context/AuthContext';
 import Constants from '../Constants/Constants';
 import Storage from '../Context/Storage';
 import logo from '../Assets/Images/logo.png';
+import Button from '../Components/Button';
 
 export default function LoginScreen({ navigation }) {
 
@@ -18,19 +19,9 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.buttonText}>Enter your name</Text>
                 <TextInput style={styles.input} onChangeText={(text) => { setName(text) }} placeholder='Name' />
             </View>
-            <View style={{ display: 'flex', alignItems: 'center' }}>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => { setUser({ name: name }); Storage.storeData({name: name}) }}>
-                    <Text style={styles.buttonText}>
-                        Login
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('RegisterScreen')}>
-                    <Text style={styles.buttonText}>
-                        Dont have an account? Sign up!
-                    </Text>
-                </TouchableOpacity>
+            <View style={{ display: 'flex', alignItems: 'center'}}>
+                <Button text="Login" onPress={() => { setUser({ name: name }); Storage.storeData({name: name})}}/>
+                <Button text="Sign up" onPress={() => navigation.navigate('RegisterScreen')}/>
             </View>
         </View>
     );
